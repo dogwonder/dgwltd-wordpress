@@ -1,0 +1,125 @@
+{
+  "name": "szepeviktor/composer-managed-wordpress",
+  "description": "Install WordPress by using Composer packages.",
+  "license": "MIT",
+  "require": {
+    "php": "~7.4",
+    "johnpbloch/wordpress": "^6.0.1",
+    "koodimonni/composer-dropin-installer": "^1.4",
+    "timber/timber": "2.x-dev",
+    "gotoandplay/gravityforms-composer-installer": "^2.3",
+    "wp-graphql/wp-graphql": "^1.8", 
+    "advanced-custom-fields/advanced-custom-fields-pro": "5.12.2",
+    "gravityforms/gravityforms": "2.6.4.3", 
+    "dgwltd/dgwltd": "1.0.1", 
+    "dgwltd/dgwltd-blocks": "1.0.1"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org",
+      "only": [
+        "wpackagist-plugin/*",
+        "wpackagist-theme/*"
+      ]
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/szepeviktor/small-project.git"
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "dgwltd/dgwltd",
+        "type": "wordpress-theme",
+        "version": "1.0.1",
+        "require": {
+          "composer/installers": "^1.4",
+          "ffraenz/private-composer-installer": "^5.0"
+        },
+        "dist": {
+          "type": "zip",
+          "url": "https://github.com/dogwonder/dgwltd-theme/archive/refs/heads/main.zip"
+        }
+      }
+    }, 
+    {
+      "type": "package",
+      "package": {
+        "name": "dgwltd/dgwltd-blocks",
+        "type": "wordpress-plugin",
+        "version": "1.0.1",
+        "require": {
+          "composer/installers": "^1.4",
+          "ffraenz/private-composer-installer": "^5.0"
+        },
+        "dist": {
+          "type": "zip",
+          "url": "https://github.com/dogwonder/dgwltd-plugin/archive/refs/heads/main.zip"
+        }
+      }
+    }, 
+    {
+      "type": "package",
+      "package": {
+        "name": "advanced-custom-fields/advanced-custom-fields-pro",
+        "type": "wordpress-plugin",
+        "version": "5.12.2",
+        "require": {
+          "composer/installers": "^1.4",
+          "ffraenz/private-composer-installer": "^5.0"
+        },
+        "dist": {
+          "type": "zip",
+          "url": "https://connect.advancedcustomfields.com/index.php?a=download&p=pro&k={%PLUGIN_ACF_PRO_KEY}&t={%VERSION}"
+        }
+      }
+    }, 
+    {
+      "type": "package",
+      "package": {
+        "name": "gravityforms/gravityforms",
+        "version": "2.6.4.3",
+        "type": "wordpress-plugin",
+        "dist": {
+          "type": "zip",
+          "url": "https://www.gravityhelp.com/wp-content/plugins/gravitymanager/api.php?op=get_plugin&slug=gravityforms&key={%WP_PLUGIN_GF_KEY}"
+        },
+        "require": {
+          "composer/installers": "^1.4",
+          "gotoandplay/gravityforms-composer-installer": "^2.3"
+        }
+      }
+    }
+  ],
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true,
+      "johnpbloch/wordpress-core-installer": true,
+      "koodimonni/composer-dropin-installer": true,
+      "ffraenz/private-composer-installer": true,
+      "gotoandplay/gravityforms-composer-installer": true
+    },
+    "classmap-authoritative": true,
+    "dropin-installer": "copy",
+    "preferred-install": {
+      "*": "dist"
+    }
+  },
+  "extra": {
+    "dropin-paths": {
+      "public/wp-content/mu-plugins/": [
+        "package:szepeviktor/waf4wordpress:core-events/waf4wordpress-core-events.php"
+      ]
+    },
+    "installer-paths": {
+      "public/wp-content/plugins/{$name}/": [
+        "type:wordpress-plugin"
+      ],
+      "public/wp-content/themes/{$name}/": [
+        "type:wordpress-theme"
+      ]
+    },
+    "wordpress-install-dir": "public/project"
+  }
+}
