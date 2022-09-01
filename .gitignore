@@ -22,7 +22,7 @@ yarn-error.log
 # Application
 .env
 .env.backup
-/public/project/
+/public/wordpress/
 /public/wp-config.php
 /public/wp-content/*
 !/public/wp-content/mu-plugins/

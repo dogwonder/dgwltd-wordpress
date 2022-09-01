@@ -120,6 +120,6 @@
         "type:wordpress-theme"
       ]
     },
-    "wordpress-install-dir": "public/project"
+    "wordpress-install-dir": "public/wordpress"
   }
 }
