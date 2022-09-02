@@ -29,3 +29,6 @@ yarn-error.log
 
 # Tests
 .php_cs.cache
+
+# htaccess
+.htaccess

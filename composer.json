@@ -1,5 +1,5 @@
 {
-  "name": "szepeviktor/composer-managed-wordpress",
+  "name": "dgwltd/composer-managed-wordpress",
   "description": "Install WordPress by using Composer packages.",
   "license": "MIT",
   "require": {
@@ -11,6 +11,7 @@
     "wp-graphql/wp-graphql": "^1.8", 
     "advanced-custom-fields/advanced-custom-fields-pro": "5.12.2",
     "gravityforms/gravityforms": "2.6.4.3", 
+    "yoast/wordpress-seo": "19.6.1", 
     "dgwltd/dgwltd": "1.0.1", 
     "dgwltd/dgwltd-blocks": "1.0.1"
   },
